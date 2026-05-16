@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: #050E22;
+  color: #F4F7FB;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #22C3E6;
+  color: #050E22;
+}
+
+/* Custom range slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: linear-gradient(90deg, #22C3E6 var(--val, 50%), rgba(255,255,255,0.12) var(--val, 50%));
+  border-radius: 9999px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  background: #22C3E6;
+  border: 3px solid #050E22;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 0 0 1px #22C3E6, 0 0 14px rgba(34,195,230,0.55);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  background: #22C3E6;
+  border: 3px solid #050E22;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+/* Glass card on dark surfaces */
+.glass-dark {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(10px);
+}
+
+/* Solid card surface */
+.surface-card {
+  background-color: #122847;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, #0E5BD9 0%, #22C3E6 100%);
+}
+
+.text-brand-gradient {
+  background: linear-gradient(135deg, #5A88F2 0%, #22C3E6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0B1B33; }
+::-webkit-scrollbar-thumb { background: #1A3460; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #22C3E6; }
