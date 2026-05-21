@@ -3,7 +3,7 @@ import { ArrowRight, Play, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-surface-0 pt-32 pb-20 lg:pt-40 lg:pb-28">
+    <section className="relative overflow-hidden bg-surface-0 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-28">
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-brand-500/20 blur-3xl" />
       <div className="pointer-events-none absolute top-1/3 right-0 h-[400px] w-[400px] rounded-full bg-accent-cyan/15 blur-3xl" />
       {/* Subtle background grid */}
@@ -24,7 +24,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.05 }}
-            className="mt-6 font-display text-5xl font-extrabold leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl"
+            className="mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
           >
             Booked Appointments.
             <br />
@@ -35,7 +35,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="mt-6 max-w-xl text-lg leading-relaxed text-white/75"
+            className="mt-5 max-w-xl text-base leading-relaxed text-white/75 sm:mt-6 sm:text-lg"
           >
             We deliver <strong className="text-white">pre-qualified, exclusive homeowner appointments</strong> straight to your sales calendar.
             Built for roofing, solar, water filtration, and impact-window contractors who are tired of paying for shared leads.

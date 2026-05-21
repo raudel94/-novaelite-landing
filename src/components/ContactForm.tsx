@@ -12,9 +12,9 @@ import {
   CheckCircle2,
   Calendar,
   Mail,
-  MessageCircle
+  Phone
 } from "lucide-react";
-import { SITE, mailto, waLink } from "../config";
+import { SITE, mailto, telLink } from "../config";
 
 type Form = {
   industry: string;
@@ -119,12 +119,10 @@ ${form.message ? `Notes: ${form.message}` : ""}`;
 
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href={waLink("Hi NovaElite, I'd like to book a strategy call.")}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-bold text-white shadow-glow transition hover:scale-[1.03] hover:bg-emerald-400"
+              href={telLink()}
+              className="inline-flex items-center gap-2 rounded-full bg-accent-cyan px-5 py-2.5 text-sm font-bold text-surface-0 shadow-glow transition hover:scale-[1.03] hover:bg-cyan-300"
             >
-              <MessageCircle size={16} /> WhatsApp · {SITE.phone}
+              <Phone size={16} /> Call · {SITE.phone}
             </a>
             <a
               href={SITE.calendly}

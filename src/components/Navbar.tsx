@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import Logo from "./Logo";
-import { SITE, waLink } from "../config";
+import { SITE, telLink } from "../config";
 
 const links = [
   { href: "#industries", label: "Industries" },
@@ -49,12 +49,17 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <a
-            href={waLink()}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-500/10 px-4 py-2 text-sm font-semibold text-emerald-300 transition hover:bg-emerald-500/20 hover:text-emerald-200"
+            href={telLink()}
+            className="hidden xl:inline-flex items-center gap-2 rounded-full border border-accent-cyan/40 bg-accent-cyan/10 px-4 py-2 text-sm font-semibold text-accent-cyan transition hover:bg-accent-cyan/20 hover:text-white"
           >
-            <MessageCircle size={14} /> {SITE.phone}
+            <Phone size={14} /> {SITE.phone}
+          </a>
+          <a
+            href={telLink()}
+            aria-label={`Call ${SITE.phone}`}
+            className="inline-flex xl:hidden items-center justify-center rounded-full border border-accent-cyan/40 bg-accent-cyan/10 p-2.5 text-accent-cyan transition hover:bg-accent-cyan/20 hover:text-white"
+          >
+            <Phone size={16} />
           </a>
           <a
             href="#contact"
@@ -87,13 +92,11 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href={waLink()}
-              target="_blank"
-              rel="noreferrer"
+              href={telLink()}
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-500/10 px-5 py-3 text-sm font-bold text-emerald-300"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-accent-cyan/40 bg-accent-cyan/10 px-5 py-3 text-sm font-bold text-accent-cyan"
             >
-              <MessageCircle size={14} /> WhatsApp · {SITE.phone}
+              <Phone size={14} /> Call · {SITE.phone}
             </a>
             <a
               href="#contact"

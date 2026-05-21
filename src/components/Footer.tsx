@@ -1,6 +1,6 @@
-import { Instagram, Facebook, Linkedin, Youtube, Mail, Phone, MessageCircle } from "lucide-react";
+import { Instagram, Mail, Phone } from "lucide-react";
 import Logo from "./Logo";
-import { SITE, mailto, waLink } from "../config";
+import { SITE, mailto, telLink } from "../config";
 
 export default function Footer() {
   return (
@@ -15,33 +15,6 @@ export default function Footer() {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
-                href={waLink()}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="WhatsApp"
-                className="rounded-full border border-emerald-400/40 bg-emerald-500/10 p-2.5 text-emerald-300 transition hover:bg-emerald-500 hover:text-white hover:border-emerald-500"
-              >
-                <MessageCircle size={18} />
-              </a>
-              <a
-                href={SITE.social.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                className="rounded-full border border-white/15 bg-white/5 p-2.5 text-white/75 transition hover:bg-brand-500 hover:text-white hover:border-brand-500"
-              >
-                <Linkedin size={18} />
-              </a>
-              <a
-                href={SITE.social.facebook}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Facebook"
-                className="rounded-full border border-white/15 bg-white/5 p-2.5 text-white/75 transition hover:bg-brand-500 hover:text-white hover:border-brand-500"
-              >
-                <Facebook size={18} />
-              </a>
-              <a
                 href={SITE.social.instagram}
                 target="_blank"
                 rel="noreferrer"
@@ -49,15 +22,6 @@ export default function Footer() {
                 className="rounded-full border border-white/15 bg-white/5 p-2.5 text-white/75 transition hover:bg-brand-500 hover:text-white hover:border-brand-500"
               >
                 <Instagram size={18} />
-              </a>
-              <a
-                href={SITE.social.youtube}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="YouTube"
-                className="rounded-full border border-white/15 bg-white/5 p-2.5 text-white/75 transition hover:bg-brand-500 hover:text-white hover:border-brand-500"
-              >
-                <Youtube size={18} />
               </a>
             </div>
           </div>
@@ -83,14 +47,8 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <MessageCircle size={14} className="text-emerald-400" />
-                <a href={waLink()} target="_blank" rel="noreferrer" className="hover:text-accent-cyan">
-                  WhatsApp · {SITE.phone}
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
                 <Phone size={14} className="text-accent-cyan" />
-                <a href={`tel:${SITE.phoneRaw}`} className="hover:text-accent-cyan">
+                <a href={telLink()} className="hover:text-accent-cyan">
                   {SITE.phone}
                 </a>
               </li>
