@@ -4,10 +4,9 @@ import {
   ArrowRight,
   ArrowLeft,
   Check,
-  Sun,
-  Wind,
-  Home,
   Droplets,
+  Waves,
+  FlaskConical,
   Sparkles,
   CheckCircle2,
   Calendar,
@@ -28,14 +27,14 @@ type Form = {
 };
 
 const industryOptions = [
-  { value: "Roofing", icon: Home, color: "text-rose-300" },
-  { value: "Solar", icon: Sun, color: "text-amber-300" },
-  { value: "Impact Windows", icon: Wind, color: "text-sky-300" },
-  { value: "Water Filtration", icon: Droplets, color: "text-cyan-300" },
-  { value: "Other Home Services", icon: Sparkles, color: "text-violet-300" }
+  { value: "Whole-Home Filtration", icon: Droplets, color: "text-cyan-300" },
+  { value: "Water Softeners", icon: Waves, color: "text-sky-300" },
+  { value: "Reverse Osmosis", icon: FlaskConical, color: "text-blue-300" },
+  { value: "Well Water Treatment", icon: Droplets, color: "text-teal-300" },
+  { value: "Other Water Treatment", icon: Sparkles, color: "text-violet-300" }
 ];
 
-const revenueOptions = ["< $500K", "$500K – $2M", "$2M – $10M", "$10M+"];
+const revenueOptions = ["1–2 people", "3–4 people", "5–6 people", "7+ people"];
 
 export default function ContactForm() {
   const [step, setStep] = useState(0);
@@ -69,18 +68,18 @@ export default function ContactForm() {
     // 🔁 Wire to Formspree / HubSpot / your endpoint.
     const body = `Hi NovaElite team,
 
-I'd like to explore booked appointments for my business.
+I'd like to book my FREE in-home water test.
 
-• Industry: ${form.industry}
-• Service area: ${form.zone}
-• Annual revenue: ${form.revenue}
+• Concern / system: ${form.industry}
+• Address / ZIP: ${form.zone}
+• Household size: ${form.revenue}
 • Name: ${form.name}
 • Company: ${form.company}
 • Email: ${form.email}
 • Phone: ${form.phone}
 
 ${form.message ? `Notes: ${form.message}` : ""}`;
-    window.location.href = `${mailto("Inbound: Strategy Call Request")}&body=${encodeURIComponent(body)}`;
+    window.location.href = `${mailto("Inbound: Free Water Test Request")}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   };
 
@@ -88,7 +87,7 @@ ${form.message ? `Notes: ${form.message}` : ""}`;
   const progress = ((step + 1) / totalSteps) * 100;
 
   return (
-    <section id="contact" className="relative bg-surface-1 py-24">
+    <section id="contact" className="relative bg-surface-1 py-16 sm:py-20 md:py-24">
       <div className="relative mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-2 lg:px-8">
         {/* Left value props */}
         <div>
@@ -96,19 +95,19 @@ ${form.message ? `Notes: ${form.message}` : ""}`;
             Get Started
           </p>
           <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-white md:text-5xl">
-            Book your <span className="text-brand-gradient">free strategy call.</span>
+            Book your <span className="text-brand-gradient">FREE water test.</span>
           </h2>
           <p className="mt-5 text-lg text-white/70">
-            Tell us your industry, market, and goals. We'll respond within one business day with a
-            no-obligation custom appointment-volume proposal.
+            Tell us about your home and water concerns. A licensed Miami technician will arrive at your door with
+            lab-grade equipment — 30 minutes, zero cost, zero obligation.
           </p>
 
           <ul className="mt-8 space-y-4">
             {[
-              "100% exclusive appointments — never shared",
-              "Month-to-month, no long-term contracts",
-              "Response within 1 business day",
-              "Custom proposal sized to your team capacity"
+              "100% free — no sales pressure",
+              "Lab-grade results in 30 minutes",
+              "Custom system recommendation",
+              "0% APR financing available"
             ].map((b) => (
               <li key={b} className="flex items-start gap-3">
                 <CheckCircle2 className="mt-0.5 shrink-0 text-emerald-400" size={20} />
@@ -173,8 +172,8 @@ ${form.message ? `Notes: ${form.message}` : ""}`;
                   >
                     {step === 0 && (
                       <div>
-                        <h3 className="font-display text-2xl font-bold text-white">What's your industry?</h3>
-                        <p className="mt-1 text-sm text-white/55">Select the vertical that best fits your business.</p>
+                        <h3 className="font-display text-2xl font-bold text-white">What's your biggest water concern?</h3>
+                        <p className="mt-1 text-sm text-white/55">Pick the option that best matches what you'd like to fix at home.</p>
                         <div className="mt-5 grid gap-3 sm:grid-cols-2">
                           {industryOptions.map((n) => {
                             const active = form.industry === n.value;
@@ -203,16 +202,16 @@ ${form.message ? `Notes: ${form.message}` : ""}`;
 
                     {step === 1 && (
                       <div>
-                        <h3 className="font-display text-2xl font-bold text-white">Where do you operate?</h3>
+                        <h3 className="font-display text-2xl font-bold text-white">What's your address or ZIP?</h3>
                         <p className="mt-1 text-sm text-white/55">
-                          City, state, or list of ZIP codes you cover.
+                          So we can confirm availability and dispatch a Miami-area technician.
                         </p>
                         <input
                           type="text"
                           autoFocus
                           value={form.zone}
                           onChange={(e) => update("zone", e.target.value)}
-                          placeholder="e.g. Dallas–Fort Worth, TX · 75001, 75204"
+                          placeholder="e.g. 33156 · Pinecrest, FL"
                           className="mt-5 w-full rounded-xl border border-white/10 bg-surface-3/40 px-4 py-3.5 text-base text-white placeholder:text-white/40 outline-none transition focus:border-accent-cyan focus:ring-2 focus:ring-accent-cyan/30"
                         />
                       </div>
@@ -221,10 +220,10 @@ ${form.message ? `Notes: ${form.message}` : ""}`;
                     {step === 2 && (
                       <div>
                         <h3 className="font-display text-2xl font-bold text-white">
-                          Annual revenue range?
+                          How big is your home?
                         </h3>
                         <p className="mt-1 text-sm text-white/55">
-                          Helps us size the proposal appropriately.
+                          Helps us size the right system for your household.
                         </p>
                         <div className="mt-5 grid grid-cols-2 gap-3">
                           {revenueOptions.map((v) => {
@@ -241,7 +240,7 @@ ${form.message ? `Notes: ${form.message}` : ""}`;
                                 }`}
                               >
                                 <span className="font-display text-lg font-bold text-white">{v}</span>
-                                <span className="block text-xs text-white/55">annual revenue</span>
+                                <span className="block text-xs text-white/55">household</span>
                               </button>
                             );
                           })}
@@ -321,7 +320,7 @@ ${form.message ? `Notes: ${form.message}` : ""}`;
                       type="submit"
                       className="brand-gradient inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold text-white shadow-card transition hover:scale-[1.03] hover:shadow-cardHover"
                     >
-                      Submit request <ArrowRight size={14} />
+                      Book my free water test <ArrowRight size={14} />
                     </button>
                   )}
                 </div>
@@ -338,7 +337,7 @@ ${form.message ? `Notes: ${form.message}` : ""}`;
               </div>
               <h3 className="mt-5 font-display text-2xl font-bold text-white">Request received!</h3>
               <p className="mt-2 text-white/70">
-                A strategist will reach out within one business day. Want to skip the queue? Book directly on Calendly.
+                A NovaElite technician will reach out shortly to confirm your free water test. Want to lock in a time now? Book directly on Calendly.
               </p>
               <a
                 href={SITE.calendly}

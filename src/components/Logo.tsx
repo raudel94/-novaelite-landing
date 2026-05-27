@@ -1,3 +1,5 @@
+import { useLocation } from "react-router-dom";
+
 export default function Logo({
   className = "h-10 w-auto",
   variant = "light"
@@ -5,14 +7,16 @@ export default function Logo({
   className?: string;
   variant?: "dark" | "light";
 }) {
+  const { pathname } = useLocation();
+  const isWater = pathname.startsWith("/water");
+  const tagline = isWater ? "Water Treatment Appointments" : "Lead Generation Systems";
+
   // "light" = used on dark backgrounds (white text)
   // "dark"  = used on light backgrounds (dark text)
   const wordColor = variant === "light" ? "text-white" : "text-ink-900";
   const taglineColor = variant === "light" ? "text-white/60" : "text-ink-500";
   return (
     <div className={`flex items-center gap-2.5 ${className}`}>
-      {/* Use a transparent-bg PNG at public/logo.png — renders seamlessly at any size,
-          over any backdrop (hero glow, navbar blur, footer). */}
       <img
         src="/logo.png"
         alt="NovaElite logo"
@@ -24,7 +28,7 @@ export default function Logo({
           Nova<span className="text-brand-gradient">Elite</span>
         </span>
         <span className={`mt-0.5 text-[8px] font-semibold uppercase tracking-[0.22em] sm:text-[9px] ${taglineColor}`}>
-          Appointments for Contractors
+          {tagline}
         </span>
       </div>
     </div>

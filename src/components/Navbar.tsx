@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "./Logo";
 import { SITE, telLink } from "../config";
 
-const links = [
-  { href: "#industries", label: "Industries" },
+// Home (/) anchors — match real ids in components
+const homeLinks = [
+  { href: "#services", label: "Services" },
   { href: "#how-it-works", label: "How It Works" },
-  { href: "#calculator", label: "ROI Calculator" },
-  { href: "#results", label: "Results" },
+  { href: "#industries", label: "Industries" },
+  { href: "#about", label: "Why Us" },
   { href: "#faq", label: "FAQ" }
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  const isWater = pathname.startsWith("/water");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -30,58 +35,82 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 lg:px-8">
-        <a href="#" aria-label="NovaElite home">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-5 sm:py-3.5 lg:px-8">
+        <Link to="/" aria-label="NovaElite home" className="shrink-0">
           <Logo variant="light" />
-        </a>
+        </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
-          {links.map((l) => (
+        {/* WATER ROUTE: only Logo + phone pill (icon-only on mobile) */}
+        {isWater ? (
+          <>
             <a
-              key={l.href}
-              href={l.href}
-              className="text-sm font-semibold text-white/75 transition hover:text-accent-cyan"
+              href={telLink()}
+              className="hidden items-center gap-2 rounded-full border border-cyan-400/40 bg-surface-2/70 px-4 py-2 text-sm font-bold text-white shadow-card backdrop-blur transition hover:border-cyan-400 hover:bg-surface-2 sm:inline-flex"
+              aria-label={`Call ${SITE.phone}`}
             >
-              {l.label}
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-cyan-500/20 text-accent-cyan ring-1 ring-cyan-400/40">
+                <Phone size={12} />
+              </span>
+              <span className="whitespace-nowrap">{SITE.phone}</span>
             </a>
-          ))}
-        </nav>
+            <a
+              href={telLink()}
+              aria-label={`Call ${SITE.phone}`}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-cyan-400/40 bg-surface-2/70 text-accent-cyan sm:hidden"
+            >
+              <Phone size={16} />
+            </a>
+          </>
+        ) : (
+          <>
+            <nav className="hidden items-center gap-8 lg:flex">
+              {homeLinks.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  className="text-sm font-semibold text-white/75 transition hover:text-accent-cyan"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <a
-            href={telLink()}
-            className="hidden xl:inline-flex items-center gap-2 rounded-full border border-accent-cyan/40 bg-accent-cyan/10 px-4 py-2 text-sm font-semibold text-accent-cyan transition hover:bg-accent-cyan/20 hover:text-white"
-          >
-            <Phone size={14} /> {SITE.phone}
-          </a>
-          <a
-            href={telLink()}
-            aria-label={`Call ${SITE.phone}`}
-            className="inline-flex xl:hidden items-center justify-center rounded-full border border-accent-cyan/40 bg-accent-cyan/10 p-2.5 text-accent-cyan transition hover:bg-accent-cyan/20 hover:text-white"
-          >
-            <Phone size={16} />
-          </a>
-          <a
-            href="#contact"
-            className="brand-gradient inline-flex items-center rounded-full px-5 py-2.5 text-sm font-bold text-white shadow-glow transition hover:scale-[1.03]"
-          >
-            Get a Quote
-          </a>
-        </div>
+            <div className="flex items-center gap-2">
+              <a
+                href={telLink()}
+                className="hidden items-center gap-2 rounded-full border border-cyan-400/40 bg-surface-2/70 px-4 py-2 text-sm font-bold text-white shadow-card backdrop-blur transition hover:border-cyan-400 hover:bg-surface-2 sm:inline-flex"
+                aria-label={`Call ${SITE.phone}`}
+              >
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-cyan-500/20 text-accent-cyan ring-1 ring-cyan-400/40">
+                  <Phone size={12} />
+                </span>
+                <span className="whitespace-nowrap">{SITE.phone}</span>
+              </a>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="rounded-lg border border-white/15 p-2 text-white lg:hidden"
-          aria-label="Menu"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+              <a
+                href={telLink()}
+                aria-label={`Call ${SITE.phone}`}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-cyan-400/40 bg-surface-2/70 text-accent-cyan sm:hidden"
+              >
+                <Phone size={16} />
+              </a>
+
+              <button
+                onClick={() => setOpen((v) => !v)}
+                className="rounded-lg border border-white/15 p-2 text-white lg:hidden"
+                aria-label="Menu"
+              >
+                {open ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
+          </>
+        )}
       </div>
 
-      {open && (
+      {!isWater && open && (
         <div className="border-t border-white/10 bg-surface-0/95 backdrop-blur lg:hidden">
           <div className="flex flex-col gap-1 p-5">
-            {links.map((l) => (
+            {homeLinks.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
@@ -91,20 +120,6 @@ export default function Navbar() {
                 {l.label}
               </a>
             ))}
-            <a
-              href={telLink()}
-              onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-accent-cyan/40 bg-accent-cyan/10 px-5 py-3 text-sm font-bold text-accent-cyan"
-            >
-              <Phone size={14} /> Call · {SITE.phone}
-            </a>
-            <a
-              href="#contact"
-              onClick={() => setOpen(false)}
-              className="brand-gradient mt-2 rounded-full px-5 py-3 text-center text-sm font-bold text-white"
-            >
-              Get a Quote
-            </a>
           </div>
         </div>
       )}

@@ -14,8 +14,8 @@ const pains = [
   },
   {
     icon: AlertTriangle,
-    title: "Generic agencies don't get contractors",
-    desc: "Most marketing agencies have never run a job site. They optimize for clicks, not closed jobs — and your pipeline pays the price."
+    title: "Generic agencies don't get home services",
+    desc: "Most marketing agencies have never run a job site or sat with a sales team. They optimize for clicks, not closed jobs — and your pipeline pays the price."
   }
 ];
 
@@ -31,15 +31,15 @@ export default function Problem() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent-cyan">
-            Why Contractor Lead-Gen Is Broken
+            Why Most Lead-Gen Is Broken
           </p>
           <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-white md:text-5xl">
             You don't need more leads.{" "}
             <span className="text-brand-gradient">You need better appointments.</span>
           </h2>
           <p className="mt-5 text-lg text-white/70">
-            We rebuilt the lead-gen model from the ground up — because contractors deserve better than recycled
-            form-fills and Zillow-style auctions.
+            We rebuilt the lead-gen model from the ground up — because home-service businesses deserve better than recycled
+            form-fills and shared lead auctions.
           </p>
         </div>
 

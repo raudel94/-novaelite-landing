@@ -11,7 +11,7 @@ type Stat = {
 
 const stats: Stat[] = [
   { icon: Users, value: 12500, suffix: "+", label: "Appointments delivered" },
-  { icon: Calendar, value: 200, suffix: "+", label: "Contractors served" },
+  { icon: Calendar, value: 200, suffix: "+", label: "Dealers served" },
   { icon: TrendingUp, value: 8, suffix: "x", label: "Average client ROI" },
   { icon: Award, value: 96, suffix: "%", label: "Client retention rate" }
 ];

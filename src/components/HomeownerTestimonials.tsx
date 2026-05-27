@@ -1,43 +1,44 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star, Quote, Calendar, Phone } from "lucide-react";
+import { SITE, calendlyLink, telLink } from "../config";
 
 const items = [
   {
-    name: "Mark Davies",
-    company: "PureWell Water Systems",
-    niche: "Whole-Home Filtration · Houston, TX",
-    result: "11.2x ROI",
+    name: "Maria González",
+    company: "Coral Gables, FL",
+    niche: "Whole-Home Filtration",
+    result: "Saved $1,400/yr",
     quote:
-      "Pay-per-appointment changed our entire growth model. We scale spend up or down with confidence because every dollar maps to a real homeowner on the calendar."
+      "The technician showed us exactly what was in our water — chlorine levels were 3x what they should be. Two weeks after installing the whole-home system, our skin stopped itching and the water actually tastes clean. Best decision we made for the house."
   },
   {
-    name: "Sarah K. Whitman",
-    company: "ClearStream Water Co.",
-    niche: "Reverse Osmosis · Phoenix, AZ",
-    result: "82% show rate",
+    name: "James Patterson",
+    company: "Pinecrest, FL",
+    niche: "Water Softener",
+    result: "No more scale",
     quote:
-      "NovaElite is the first lead-gen partner that actually understood our sales cycle. Our show rate jumped from 51% to 82% in the first 60 days. Game changer."
+      "We were replacing our water heater every 4 years because of the hard water. Since installing the softener 18 months ago, no scale on the faucets, glasses come out spotless, and my wife says her hair feels different. Zero complaints."
   },
   {
-    name: "Adam Brennan",
-    company: "Brennan Water Solutions",
-    niche: "Water Softeners · Dallas, TX",
-    result: "+$1.4M in 6 months",
+    name: "Andrea Rivera",
+    company: "Aventura, FL",
+    niche: "Reverse Osmosis",
+    result: "Bottled water gone",
     quote:
-      "We cut our cost per closed job in half. The appointments are pre-qualified, the homeowners actually pick up the phone, and our reps are closing 34% — up from 18% on shared leads."
+      "We were spending almost $90 a month on bottled water. The RO at the kitchen sink tastes better than anything in a bottle. Paid itself off in under a year and my kids actually drink water now."
   },
   {
-    name: "Luis Bermúdez",
-    company: "GulfCoast Well Water Pros",
-    niche: "Well Water Treatment · Tampa, FL",
-    result: "+58 booked appts/mo",
+    name: "David Brennan",
+    company: "Homestead, FL",
+    niche: "Well Water Treatment",
+    result: "Iron stains gone",
     quote:
-      "Appointments flow straight into our CRM with full context — water quality, household size, urgency. My reps stopped wasting half their week on bad leads. ROI is the highest we've ever measured."
+      "On well water and the iron stains were ruining our laundry and bathrooms. NovaElite tested everything, designed a system specific to our well, and the difference is night and day. White towels stay white. Highly recommend."
   }
 ];
 
-export default function Testimonials() {
+export default function HomeownerTestimonials() {
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
@@ -51,10 +52,10 @@ export default function Testimonials() {
     <section className="relative bg-surface-1 py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent-cyan">Client Results</p>
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent-cyan">Real Miami Homeowners</p>
           <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-white md:text-5xl">
-            Dealers closing more jobs{" "}
-            <span className="text-brand-gradient">with less wasted spend.</span>
+            Families across Miami{" "}
+            <span className="text-brand-gradient">trust their water.</span>
           </h2>
         </div>
 
@@ -117,6 +118,30 @@ export default function Testimonials() {
             >
               <ChevronRight size={18} />
             </button>
+          </div>
+
+          {/* CTA below testimonials */}
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a
+              href="#contact"
+              className="brand-gradient inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white shadow-card transition hover:scale-[1.03]"
+            >
+              <Calendar size={16} /> Book my free water test
+            </a>
+            <a
+              href={calendlyLink()}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+            >
+              Open Calendly
+            </a>
+            <a
+              href={telLink()}
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+            >
+              <Phone size={14} /> {SITE.phone}
+            </a>
           </div>
         </div>
       </div>

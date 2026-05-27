@@ -1,14 +1,14 @@
 export const SITE = {
   brand: "NovaElite",
-  tagline: "Appointments for Contractors",
+  tagline: "Lead Generation Systems",
   // Real contact info
-  phone: "+1 (305) 897-8201",
-  phoneRaw: "+13058978201",
+  phone: "+1 (786) 385-3287",
+  phoneRaw: "+17863853287",
   email: "info@novaelitecorporation.com",
   calendly: "https://calendly.com/lanfercorporation/30min",
   social: {
     linkedin: "https://linkedin.com/company/novaelite",
-    facebook: "https://facebook.com/novaelite",
+    facebook: "https://www.facebook.com/share/1EWW41ey5G/?mibextid=wwXIfr",
     instagram: "https://www.instagram.com/novaelite.corporation",
     youtube: "https://youtube.com/@novaelite"
   }

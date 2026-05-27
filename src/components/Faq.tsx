@@ -5,7 +5,7 @@ import { Plus, Minus } from "lucide-react";
 const faqs = [
   {
     q: "Are appointments truly exclusive to my business?",
-    a: "Yes. Every appointment we book is delivered to exactly one contractor. We never sell, share, or resell the same homeowner to a competitor — guaranteed in writing in your service agreement."
+    a: "Yes. Every appointment we book is delivered to exactly one client. We never sell, share, or resell the same homeowner to a competitor — guaranteed in writing in your service agreement."
   },
   {
     q: "What's the pricing model?",
@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: "How fast do you ramp up?",
-    a: "Most contractors are receiving booked appointments within 7–14 days of kickoff. Full pipeline volume typically lands in week 3–4, after the campaign optimization window."
+    a: "Most clients are receiving booked appointments within 7–14 days of kickoff. Full pipeline volume typically lands in week 3–4, after the campaign optimization window."
   },
   {
     q: "Can I integrate with my existing CRM?",
@@ -32,8 +32,8 @@ const faqs = [
     a: "No. All engagements are month-to-month. Most clients renew for years, but you're never locked in. We earn the next 30 days every single month."
   },
   {
-    q: "Do you work with smaller contractors or only enterprises?",
-    a: "Both. We serve solo operators ramping up to 7-figure shops and 8-figure enterprise contractors. Starter plans begin at 15 appointments/month."
+    q: "Do you work with smaller operators or only enterprises?",
+    a: "Both. We serve solo operators ramping up to 7-figure shops and 8-figure enterprise home-service businesses. Starter plans begin at 15 appointments/month."
   }
 ];
 
@@ -45,7 +45,7 @@ export default function Faq() {
         <div className="text-center">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent-cyan">FAQ</p>
           <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-white md:text-5xl">
-            Answers for serious <span className="text-brand-gradient">contractors.</span>
+            Answers for serious <span className="text-brand-gradient">operators.</span>
           </h2>
         </div>
 

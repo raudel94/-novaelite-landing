@@ -1,39 +1,39 @@
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Stats from "./components/Stats";
-import Problem from "./components/Problem";
-import Niches from "./components/Niches";
-import HowItWorks from "./components/HowItWorks";
-import RoiCalculator from "./components/RoiCalculator";
-import RiskReversal from "./components/RiskReversal";
-import Platform from "./components/Platform";
-import Integrations from "./components/Integrations";
-import Testimonials from "./components/Testimonials";
-import Faq from "./components/Faq";
-import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import HomePage from "./pages/HomePage";
+import WaterPage from "./pages/WaterPage";
+
+// Reset scroll on route change
+function RouteScrollReset() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+  }, [pathname]);
+  return null;
+}
 
 export default function App() {
   return (
-    <div className="relative min-h-screen bg-surface-0 text-white">
-      <Navbar />
-      <main>
-        <Hero />
-        <Stats />
-        <Problem />
-        <Niches />
-        <HowItWorks />
-        <RoiCalculator />
-        <RiskReversal />
-        <Platform />
-        <Integrations />
-        <Testimonials />
-        <Faq />
-        <ContactForm />
-      </main>
-      <Footer />
-      <ScrollToTop />
-    </div>
+    <HelmetProvider>
+      <BrowserRouter>
+        <RouteScrollReset />
+        <div className="relative min-h-screen bg-surface-0 text-white">
+          <Navbar />
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/water" element={<WaterPage />} />
+              <Route path="*" element={<HomePage />} />
+            </Routes>
+          </main>
+          <Footer />
+          <ScrollToTop />
+        </div>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }

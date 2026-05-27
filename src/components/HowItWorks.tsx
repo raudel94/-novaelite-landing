@@ -10,7 +10,7 @@ const steps = [
   {
     icon: Megaphone,
     title: "2. Launch campaigns",
-    desc: "Geo-targeted ads on Meta, Google, and YouTube — written and produced by a creative team that's worked exclusively with contractors."
+    desc: "Geo-targeted ads on Meta, Google, and YouTube — written and produced by a creative team that's worked exclusively with water-treatment dealers."
   },
   {
     icon: CheckCircle2,

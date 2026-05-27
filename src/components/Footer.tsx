@@ -1,4 +1,5 @@
-import { Instagram, Mail, Phone } from "lucide-react";
+import { Instagram, Facebook, Mail, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import { SITE, mailto, telLink } from "../config";
 
@@ -6,12 +7,12 @@ export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-surface-0 pt-16 pb-8">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-4">
+        <div className="grid gap-10 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <Logo variant="light" />
             <p className="mt-5 max-w-sm text-sm text-white/65">
-              NovaElite is the appointment-generation partner for high-ticket home-services contractors
-              across the United States. Exclusive. Pre-qualified. Pay per appointment.
+              NovaElite Corporation is the lead-generation partner for U.S. service businesses.
+              Exclusive. Pre-qualified. Pay per appointment.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
@@ -23,18 +24,16 @@ export default function Footer() {
               >
                 <Instagram size={18} />
               </a>
+              <a
+                href={SITE.social.facebook}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                className="rounded-full border border-white/15 bg-white/5 p-2.5 text-white/75 transition hover:bg-brand-500 hover:text-white hover:border-brand-500"
+              >
+                <Facebook size={18} />
+              </a>
             </div>
-          </div>
-
-          <div>
-            <p className="font-display font-bold uppercase tracking-wider text-white">Industries</p>
-            <ul className="mt-4 space-y-2 text-sm text-white/65">
-              <li><a href="#industries" className="hover:text-accent-cyan">Roofing</a></li>
-              <li><a href="#industries" className="hover:text-accent-cyan">Solar</a></li>
-              <li><a href="#industries" className="hover:text-accent-cyan">Impact Windows</a></li>
-              <li><a href="#industries" className="hover:text-accent-cyan">Water Filtration</a></li>
-              <li><a href="#platform" className="hover:text-accent-cyan">All Services</a></li>
-            </ul>
           </div>
 
           <div>
@@ -52,8 +51,7 @@ export default function Footer() {
                   {SITE.phone}
                 </a>
               </li>
-              <li><a href="#contact" className="hover:text-accent-cyan">Book a strategy call</a></li>
-              <li><a href="#faq" className="hover:text-accent-cyan">FAQ</a></li>
+              <li><Link to="/#faq" className="hover:text-accent-cyan">FAQ</Link></li>
             </ul>
           </div>
         </div>
