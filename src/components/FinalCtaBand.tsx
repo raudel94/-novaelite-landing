@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Phone } from "lucide-react";
-import { calendlyLink, telLink, SITE } from "../config";
+import { Phone } from "lucide-react";
+import { telLink, SITE } from "../config";
 
 export default function FinalCtaBand() {
   return (
@@ -17,24 +17,15 @@ export default function FinalCtaBand() {
 
           <div className="relative">
             <h2 className="font-display text-3xl font-extrabold tracking-tight text-white md:text-5xl">
-              Ready to fill your calendar with{" "}
-              <span className="text-brand-gradient">qualified appointments?</span>
+              Book a call — and we'll show you how to{" "}
+              <span className="text-brand-gradient">fill your calendar in 14 days.</span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-lg text-white/80">
-              Book a 30-minute strategy call. We'll walk you through our system, share real
-              case studies, and show you exactly what's possible in your market.
+              30 minutes. Zero pressure. We'll map your market, share real case studies, and
+              show you exactly how many booked appointments your team can handle.
             </p>
 
-            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a
-                href={calendlyLink()}
-                target="_blank"
-                rel="noreferrer"
-                className="brand-gradient group inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-base font-bold text-white shadow-card transition hover:scale-[1.03] hover:shadow-cardHover"
-              >
-                Book Your Strategy Call
-                <ArrowRight size={18} className="transition group-hover:translate-x-1" />
-              </a>
+            <div className="mt-9 flex items-center justify-center">
               <a
                 href={telLink()}
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-4 text-base font-semibold text-white transition hover:border-white/40 hover:bg-white/10"

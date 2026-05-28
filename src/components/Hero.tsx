@@ -70,7 +70,7 @@ export default function Hero() {
               href="#contact"
               className="brand-gradient group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold text-white shadow-card transition hover:scale-[1.03] hover:shadow-cardHover sm:px-7 sm:py-4 sm:text-base"
             >
-              Book my FREE water test
+              Find out what's really in your water
               <ArrowRight size={16} className="transition group-hover:translate-x-1" />
             </a>
           </motion.div>

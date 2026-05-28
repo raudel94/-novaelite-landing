@@ -16,7 +16,7 @@ export default function CorporateHero() {
           transition={{ duration: 0.6 }}
           className="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-accent-cyan"
         >
-          <ShieldCheck size={14} /> Performance-Based Lead Generation Agency
+          <ShieldCheck size={14} /> Exclusive Pre-Qualified Appointments
         </motion.div>
 
         <motion.h1
@@ -25,8 +25,8 @@ export default function CorporateHero() {
           transition={{ duration: 0.7, delay: 0.05 }}
           className="mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
         >
-          Exclusive, high-intent leads for{" "}
-          <span className="text-brand-gradient">service businesses ready to scale.</span>
+          Exclusive, pre-qualified appointments for{" "}
+          <span className="text-brand-gradient">home-service businesses ready to scale.</span>
         </motion.h1>
 
         <motion.p
@@ -35,9 +35,9 @@ export default function CorporateHero() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg"
         >
-          NovaElite Corporation builds modern lead-generation systems that turn ad spend into
-          booked revenue. <strong className="text-white">Performance-based. Industry-specialized.
-          Built for U.S. service businesses.</strong>
+          We fill your calendar with real homeowner appointments — confirmed, exclusive,
+          and ready to close. <strong className="text-white">No shared leads. No junk forms.
+          No clicks. Just booked jobs.</strong>
         </motion.p>
 
         <motion.div
@@ -50,14 +50,14 @@ export default function CorporateHero() {
             href="#industries"
             className="brand-gradient group inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-base font-bold text-white shadow-card transition hover:scale-[1.03] hover:shadow-cardHover"
           >
-            Explore Our Industries
+            Book a discovery call
             <ArrowRight size={18} className="transition group-hover:translate-x-1" />
           </a>
           <a
             href="#how-it-works"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-4 text-base font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
           >
-            <TrendingUp size={16} /> See How We Work
+            <TrendingUp size={16} /> See how it works
           </a>
         </motion.div>
 

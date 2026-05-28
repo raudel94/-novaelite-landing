@@ -52,11 +52,11 @@ export default function IndustriesGrid() {
 
               <h3 className="mt-5 pr-28 font-display text-xl font-bold text-white">Water Treatment</h3>
               <p className="mt-2 pr-4 text-sm leading-relaxed text-white/70">
-                Lead generation for water softener, RO, and whole-home filtration dealers.
+                Exclusive, pre-qualified appointments for water softener, RO, and whole-home filtration dealers.
               </p>
 
               <div className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-bold text-accent-cyan transition group-hover:gap-3">
-                Explore Water Treatment Leads
+                Explore Water Treatment
                 <ArrowRight size={16} />
               </div>
             </Link>

@@ -3,25 +3,25 @@ import { motion } from "framer-motion";
 const systems = [
   {
     name: "Whole-Home Filtration",
-    desc: "Multi-stage carbon and sediment systems that protect every faucet, appliance, and shower in the home.",
+    desc: "Multi-stage carbon and sediment systems that protect every faucet, appliance, and shower — cleaner water at every tap in your home.",
     img: "/water/homefiltration.png",
     alt: "Whole-home water filtration system"
   },
   {
     name: "Water Softeners",
-    desc: "Salt-based ion exchange softeners that eliminate hard water, scale buildup, and protect plumbing investments.",
+    desc: "Ion-exchange softeners that eliminate hard water and scale buildup — softer skin, brighter laundry, and longer life for your plumbing and appliances.",
     img: "/water/softner.png",
     alt: "Residential water softener system"
   },
   {
     name: "Reverse Osmosis (RO)",
-    desc: "Under-sink and whole-home RO systems for premium drinking water — the biggest upsell in the industry.",
+    desc: "Under-sink and whole-home RO systems that deliver bottled-water purity straight from your kitchen tap — perfect for drinking, cooking, and coffee.",
     img: "/water/osmosis.png",
     alt: "Reverse osmosis drinking water system"
   },
   {
     name: "Well Water Treatment",
-    desc: "Iron, sulfur, sediment, and bacteria treatment for rural homes — high-ticket, high-urgency leads.",
+    desc: "Iron, sulfur, sediment, and bacteria removal for homes on private wells — restore clear, safe water you can trust throughout the house.",
     img: "/water/well.png",
     alt: "Well water treatment equipment"
   }
@@ -33,15 +33,15 @@ export default function WaterSystems() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent-cyan">
-            Systems We Generate Leads For
+            Systems we install in Miami homes
           </p>
           <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-white md:text-5xl">
-            Every system you sell —{" "}
-            <span className="text-brand-gradient">we know how to fill its pipeline.</span>
+            The right solution{" "}
+            <span className="text-brand-gradient">for your water — and your home.</span>
           </h2>
           <p className="mt-5 text-lg text-white/70">
-            Our campaigns are tuned to each water-treatment product category, with creative and
-            qualification logic built around real homeowner intent.
+            From whole-home filtration to under-sink reverse osmosis, every NovaElite system is hand-picked
+            after your free in-home water test — so you only invest in what your home actually needs.
           </p>
         </div>
 

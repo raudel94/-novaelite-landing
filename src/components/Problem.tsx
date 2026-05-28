@@ -1,28 +1,22 @@
 import { motion } from "framer-motion";
-import { AlertTriangle, Users, Clock, XCircle, CheckCircle2 } from "lucide-react";
+import { Check, X } from "lucide-react";
 
-const pains = [
-  {
-    icon: Users,
-    title: "Shared leads, 4 competitors deep",
-    desc: "Most lead-gen companies sell the same homeowner to 3–5 contractors. By the time you call, they've already heard your pitch — twice."
-  },
-  {
-    icon: Clock,
-    title: "No-shows from low-intent forms",
-    desc: "Cheap web forms attract tire-kickers. Your sales team wastes hours on prospects who never picked up or were never serious."
-  },
-  {
-    icon: AlertTriangle,
-    title: "Generic agencies don't get home services",
-    desc: "Most marketing agencies have never run a job site or sat with a sales team. They optimize for clicks, not closed jobs — and your pipeline pays the price."
-  }
+const doList = [
+  { title: "Exclusive appointments", desc: "Every booked homeowner is delivered to one client — yours." },
+  { title: "Real pre-qualification", desc: "Filtered by budget, timeline, ownership, and service area." },
+  { title: "Human confirmation", desc: "A live U.S.-based agent calls every prospect before it hits your calendar." },
+  { title: "CRM integration", desc: "Appointments pushed live to HubSpot, ServiceTitan, JobNimbus, AccuLynx + 60 more." },
+  { title: "Pay-per-booked-appointment", desc: "No ad markups. No setup fees. You pay when a job lands on your calendar." },
+  { title: "Replacement guarantee", desc: "No-show or off-criteria? We replace it free. Every time." }
 ];
 
-const wins = [
-  "100% exclusive — never shared with competitors",
-  "Pre-qualified by budget, timeline & intent",
-  "Pay-per-appointment — not per click or lead"
+const dontList = [
+  { title: "No shared leads", desc: "We never resell the same homeowner to a competitor." },
+  { title: "No junk web forms", desc: "No tire-kicker form-fills that ghost your sales team." },
+  { title: "No pay-per-click games", desc: "You don't pay for clicks, impressions, or traffic — only booked jobs." },
+  { title: "No renters", desc: "Every appointment is a verified homeowner with decision-making authority." },
+  { title: "No generic agency playbooks", desc: "We don't run cookie-cutter campaigns. Every vertical gets its own system." },
+  { title: "No long-term contracts", desc: "Month-to-month. We earn the next 30 days every month." }
 ];
 
 export default function Problem() {
@@ -31,78 +25,84 @@ export default function Problem() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent-cyan">
-            Why Most Lead-Gen Is Broken
+            What We Do · What We Don't
           </p>
           <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-white md:text-5xl">
-            You don't need more leads.{" "}
-            <span className="text-brand-gradient">You need better appointments.</span>
+            Clear lines.{" "}
+            <span className="text-brand-gradient">Premium standards.</span>
           </h2>
           <p className="mt-5 text-lg text-white/70">
-            We rebuilt the lead-gen model from the ground up — because home-service businesses deserve better than recycled
-            form-fills and shared lead auctions.
+            Most agencies blur every line to keep you signed. We do the opposite — here's exactly what we will and won't do for your business.
           </p>
         </div>
 
-        {/* RED BLOCK — what competitors do */}
-        <div className="relative mt-16 rounded-3xl border-2 border-red-500/40 bg-red-500/5 p-6 pt-8 md:p-8 md:pt-10">
-          <div className="absolute -top-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-red-500/60 bg-red-500 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.15em] text-white shadow-lg shadow-red-500/30 sm:gap-2 sm:px-4 sm:text-[11px] sm:tracking-[0.18em]">
-              <XCircle size={12} className="sm:hidden" />
-              <XCircle size={14} className="hidden sm:inline" />
-              <span className="sm:hidden">What others do</span>
-              <span className="hidden sm:inline">What other lead-gen companies do</span>
-            </span>
-          </div>
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+          {/* WE DO */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5 }}
+            className="relative overflow-hidden rounded-3xl border-2 border-emerald-500/40 bg-gradient-to-br from-emerald-500/10 via-emerald-500/5 to-transparent p-7 md:p-9"
+          >
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/50 bg-emerald-500/20 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-emerald-200">
+              <Check size={14} /> What we DO
+            </div>
+            <h3 className="mt-4 font-display text-2xl font-extrabold text-white">
+              We deliver booked appointments — period.
+            </h3>
 
-          <div className="mt-2 grid gap-6 md:grid-cols-3">
-            {pains.map((p, i) => (
-              <motion.div
-                key={p.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="rounded-2xl border border-red-500/30 bg-red-500/[0.07] p-7 transition hover:-translate-y-1 hover:border-red-500/50"
-              >
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/20 text-red-300 ring-1 ring-red-500/40">
-                  <p.icon size={22} />
-                </div>
-                <h3 className="mt-5 font-display text-lg font-bold text-white">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/65">{p.desc}</p>
-              </motion.div>
-            ))}
-          </div>
+            <ul className="mt-6 space-y-3">
+              {doList.map((item) => (
+                <li
+                  key={item.title}
+                  className="flex items-start gap-3 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.05] p-4"
+                >
+                  <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/25 text-emerald-200">
+                    <Check size={14} strokeWidth={3} />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">{item.title}</p>
+                    <p className="mt-0.5 text-sm text-white/65">{item.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* WE DON'T */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="relative overflow-hidden rounded-3xl border-2 border-red-500/40 bg-gradient-to-br from-red-500/10 via-red-500/5 to-transparent p-7 md:p-9"
+          >
+            <div className="inline-flex items-center gap-2 rounded-full border border-red-500/50 bg-red-500/20 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-red-200">
+              <X size={14} /> What we DON'T
+            </div>
+            <h3 className="mt-4 font-display text-2xl font-extrabold text-white">
+              We refuse to play the broken lead-gen game.
+            </h3>
+
+            <ul className="mt-6 space-y-3">
+              {dontList.map((item) => (
+                <li
+                  key={item.title}
+                  className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/[0.05] p-4"
+                >
+                  <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-500/25 text-red-200">
+                    <X size={14} strokeWidth={3} />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">{item.title}</p>
+                    <p className="mt-0.5 text-sm text-white/65">{item.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
-
-        {/* GREEN BLOCK — NovaElite difference */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.55 }}
-          className="relative mt-16 rounded-3xl border-2 border-emerald-500/40 bg-gradient-to-br from-emerald-500/10 via-emerald-500/5 to-transparent p-6 pt-8 md:p-8 md:pt-10"
-        >
-          <div className="absolute -top-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/60 bg-emerald-500 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.15em] text-white shadow-lg shadow-emerald-500/30 sm:gap-2 sm:px-4 sm:text-[11px] sm:tracking-[0.18em]">
-              <CheckCircle2 size={12} className="sm:hidden" />
-              <CheckCircle2 size={14} className="hidden sm:inline" />
-              <span className="sm:hidden">NovaElite difference</span>
-              <span className="hidden sm:inline">How NovaElite is different</span>
-            </span>
-          </div>
-
-          <div className="mt-2 grid items-center gap-6 md:grid-cols-3">
-            {wins.map((w) => (
-              <div
-                key={w}
-                className="flex items-start gap-3 rounded-2xl border border-emerald-500/25 bg-emerald-500/[0.07] p-5"
-              >
-                <CheckCircle2 className="mt-0.5 shrink-0 text-emerald-300" size={22} />
-                <span className="text-sm font-semibold leading-snug text-white">{w}</span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

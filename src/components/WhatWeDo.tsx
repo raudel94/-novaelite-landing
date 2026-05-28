@@ -28,12 +28,12 @@ export default function WhatWeDo() {
             What We Do
           </p>
           <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-white md:text-5xl">
-            A full lead-generation engine —{" "}
+            A full appointment system —{" "}
             <span className="text-brand-gradient">built end-to-end.</span>
           </h2>
           <p className="mt-5 text-lg text-white/70">
-            From ad creative to closed appointment, we own the full funnel so your sales team
-            only talks to ready-to-buy prospects.
+            From the first ad to the booked appointment on your calendar, we own every step —
+            so your sales team only meets homeowners who are ready to buy.
           </p>
         </div>
 

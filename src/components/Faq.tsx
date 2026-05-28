@@ -12,6 +12,10 @@ const faqs = [
     a: "We operate on a pay-per-booked-appointment model. There are no setup fees or media-spend markups. Pricing varies by industry and market, typically between $150–$450 per qualified appointment."
   },
   {
+    q: "How many appointments can I expect per week?",
+    a: "Most clients receive between 8 and 25 booked appointments per week once the campaign is fully optimized (usually weeks 3–4). Volume is calibrated to your team's capacity — we never overload your calendar."
+  },
+  {
     q: "What happens if an appointment no-shows?",
     a: "If a homeowner doesn't reschedule and doesn't show, we replace the appointment at no cost. Our quality team also monitors no-show rates weekly to tighten qualification scripts."
   },

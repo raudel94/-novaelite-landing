@@ -62,11 +62,31 @@ export default function ContactForm() {
     (step === 2 && form.revenue) ||
     step === 3;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.email) return;
-    // 🔁 Wire to Formspree / HubSpot / your endpoint.
-    const body = `Hi NovaElite team,
+    if (!form.name || !form.email || submitting) return;
+    setSubmitting(true);
+    setErrorMsg(null);
+
+    try {
+      const res = await fetch("/api/send-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, source: "/water" })
+      });
+
+      if (!res.ok) {
+        const { error } = await res.json().catch(() => ({ error: "Unknown error" }));
+        throw new Error(error || `Request failed (${res.status})`);
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      // Fallback: open mail client if the API fails (network/server down)
+      const body = `Hi NovaElite team,
 
 I'd like to book my FREE in-home water test.
 
@@ -74,13 +94,17 @@ I'd like to book my FREE in-home water test.
 • Address / ZIP: ${form.zone}
 • Household size: ${form.revenue}
 • Name: ${form.name}
-• Company: ${form.company}
 • Email: ${form.email}
 • Phone: ${form.phone}
-
-${form.message ? `Notes: ${form.message}` : ""}`;
-    window.location.href = `${mailto("Inbound: Free Water Test Request")}&body=${encodeURIComponent(body)}`;
-    setSubmitted(true);
+${form.message ? `\nNotes: ${form.message}` : ""}`;
+      const fallbackMsg = err instanceof Error ? err.message : "Network error";
+      setErrorMsg(`${fallbackMsg}. Opening your email app as backup…`);
+      setTimeout(() => {
+        window.location.href = `${mailto("Inbound: Free Water Test Request")}&body=${encodeURIComponent(body)}`;
+      }, 1500);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const totalSteps = 4;
@@ -318,12 +342,16 @@ ${form.message ? `Notes: ${form.message}` : ""}`;
                   ) : (
                     <button
                       type="submit"
-                      className="brand-gradient inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold text-white shadow-card transition hover:scale-[1.03] hover:shadow-cardHover"
+                      disabled={submitting}
+                      className="brand-gradient inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold text-white shadow-card transition hover:scale-[1.03] hover:shadow-cardHover disabled:cursor-wait disabled:opacity-60"
                     >
-                      Book my free water test <ArrowRight size={14} />
+                      {submitting ? "Sending…" : "Book my free water test"} <ArrowRight size={14} />
                     </button>
                   )}
                 </div>
+                {errorMsg && (
+                  <p className="mt-4 text-center text-sm text-amber-300">{errorMsg}</p>
+                )}
               </form>
             </>
           ) : (
