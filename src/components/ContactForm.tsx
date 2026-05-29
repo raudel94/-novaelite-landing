@@ -5,12 +5,13 @@ import {
   ArrowLeft,
   Check,
   Droplets,
-  Waves,
-  FlaskConical,
+  Coffee,
+  Shirt,
+  Flame,
   Sparkles,
+  AlertCircle,
   CheckCircle2,
   Calendar,
-  Mail,
   Phone
 } from "lucide-react";
 import { SITE, mailto, telLink } from "../config";
@@ -20,18 +21,19 @@ type Form = {
   zone: string;
   revenue: string;
   name: string;
-  company: string;
   email: string;
   phone: string;
   message: string;
 };
 
-const industryOptions = [
-  { value: "Whole-Home Filtration", icon: Droplets, color: "text-cyan-300" },
-  { value: "Water Softeners", icon: Waves, color: "text-sky-300" },
-  { value: "Reverse Osmosis", icon: FlaskConical, color: "text-blue-300" },
-  { value: "Well Water Treatment", icon: Droplets, color: "text-teal-300" },
-  { value: "Other Water Treatment", icon: Sparkles, color: "text-violet-300" }
+const symptomOptions = [
+  { value: "White spots on faucets", icon: Sparkles, color: "text-cyan-300" },
+  { value: "Strange smell in the water", icon: AlertCircle, color: "text-amber-300" },
+  { value: "Metallic or bitter taste", icon: Coffee, color: "text-orange-300" },
+  { value: "Dry skin after showering", icon: Droplets, color: "text-sky-300" },
+  { value: "Stiff or rough laundry", icon: Shirt, color: "text-violet-300" },
+  { value: "Scale buildup on appliances", icon: Flame, color: "text-rose-300" },
+  { value: "Cloudy or sediment-filled water", icon: Droplets, color: "text-teal-300" }
 ];
 
 const revenueOptions = ["1–2 people", "3–4 people", "5–6 people", "7+ people"];
@@ -39,16 +41,25 @@ const revenueOptions = ["1–2 people", "3–4 people", "5–6 people", "7+ peop
 export default function ContactForm() {
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const [symptoms, setSymptoms] = useState<Set<string>>(new Set());
   const [form, setForm] = useState<Form>({
     industry: "",
     zone: "",
     revenue: "",
     name: "",
-    company: "",
     email: "",
     phone: "",
     message: ""
   });
+
+  const toggleSymptom = (s: string) => {
+    setSymptoms((prev) => {
+      const nextSet = new Set(prev);
+      nextSet.has(s) ? nextSet.delete(s) : nextSet.add(s);
+      setForm((f) => ({ ...f, industry: Array.from(nextSet).join(", ") }));
+      return nextSet;
+    });
+  };
 
   const update = <K extends keyof Form>(k: K, v: Form[K]) =>
     setForm((f) => ({ ...f, [k]: v }));
@@ -57,7 +68,7 @@ export default function ContactForm() {
   const prev = () => setStep((s) => Math.max(s - 1, 0));
 
   const canNext =
-    (step === 0 && form.industry) ||
+    (step === 0 && symptoms.size > 0) ||
     (step === 1 && form.zone) ||
     (step === 2 && form.revenue) ||
     step === 3;
@@ -90,7 +101,7 @@ export default function ContactForm() {
 
 I'd like to book my FREE in-home water test.
 
-• Concern / system: ${form.industry}
+• Symptoms: ${form.industry}
 • Address / ZIP: ${form.zone}
 • Household size: ${form.revenue}
 • Name: ${form.name}
@@ -155,12 +166,6 @@ ${form.message ? `\nNotes: ${form.message}` : ""}`;
             >
               <Calendar size={16} /> Book on Calendly
             </a>
-            <a
-              href={mailto()}
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
-            >
-              <Mail size={16} /> {SITE.email}
-            </a>
           </div>
         </div>
 
@@ -196,24 +201,24 @@ ${form.message ? `\nNotes: ${form.message}` : ""}`;
                   >
                     {step === 0 && (
                       <div>
-                        <h3 className="font-display text-2xl font-bold text-white">What's your biggest water concern?</h3>
-                        <p className="mt-1 text-sm text-white/55">Pick the option that best matches what you'd like to fix at home.</p>
-                        <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                          {industryOptions.map((n) => {
-                            const active = form.industry === n.value;
+                        <h3 className="font-display text-2xl font-bold text-white">Are you noticing any of these water issues?</h3>
+                        <p className="mt-1 text-sm text-white/55">Tick every problem you've seen at home — the more, the better we can help.</p>
+                        <div className="mt-5 grid gap-2.5 sm:grid-cols-2">
+                          {symptomOptions.map((s) => {
+                            const active = symptoms.has(s.value);
                             return (
                               <button
                                 type="button"
-                                key={n.value}
-                                onClick={() => update("industry", n.value)}
+                                key={s.value}
+                                onClick={() => toggleSymptom(s.value)}
                                 className={`flex items-center gap-3 rounded-xl border px-4 py-3 text-left transition ${
                                   active
                                     ? "border-accent-cyan bg-brand-500/15"
                                     : "border-white/10 bg-surface-3/40 hover:border-white/25"
                                 }`}
                               >
-                                <n.icon className={n.color} size={20} />
-                                <span className="text-sm font-semibold text-white">{n.value}</span>
+                                <s.icon className={s.color} size={20} />
+                                <span className="text-sm font-semibold text-white">{s.value}</span>
                                 {active && (
                                   <Check className="ml-auto text-accent-cyan" size={16} />
                                 )}
@@ -221,6 +226,11 @@ ${form.message ? `\nNotes: ${form.message}` : ""}`;
                             );
                           })}
                         </div>
+                        {symptoms.size > 0 && (
+                          <p className="mt-4 text-xs font-semibold text-accent-cyan">
+                            {symptoms.size} problem{symptoms.size > 1 ? "s" : ""} selected
+                          </p>
+                        )}
                       </div>
                     )}
 
@@ -276,7 +286,7 @@ ${form.message ? `\nNotes: ${form.message}` : ""}`;
                       <div className="space-y-4">
                         <h3 className="font-display text-2xl font-bold text-white">Your details</h3>
                         <p className="text-sm text-white/55">
-                          We respond within one business day.
+                          We'll call you within 24 hours to confirm your free water test.
                         </p>
                         <input
                           required
@@ -287,18 +297,11 @@ ${form.message ? `\nNotes: ${form.message}` : ""}`;
                           className="w-full rounded-xl border border-white/10 bg-surface-3/40 px-4 py-3 text-white placeholder:text-white/40 outline-none focus:border-accent-cyan focus:ring-2 focus:ring-accent-cyan/30"
                         />
                         <input
-                          type="text"
-                          value={form.company}
-                          onChange={(e) => update("company", e.target.value)}
-                          placeholder="Company name"
-                          className="w-full rounded-xl border border-white/10 bg-surface-3/40 px-4 py-3 text-white placeholder:text-white/40 outline-none focus:border-accent-cyan focus:ring-2 focus:ring-accent-cyan/30"
-                        />
-                        <input
                           required
                           type="email"
                           value={form.email}
                           onChange={(e) => update("email", e.target.value)}
-                          placeholder="Work email"
+                          placeholder="Email"
                           className="w-full rounded-xl border border-white/10 bg-surface-3/40 px-4 py-3 text-white placeholder:text-white/40 outline-none focus:border-accent-cyan focus:ring-2 focus:ring-accent-cyan/30"
                         />
                         <input
@@ -345,7 +348,7 @@ ${form.message ? `\nNotes: ${form.message}` : ""}`;
                       disabled={submitting}
                       className="brand-gradient inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold text-white shadow-card transition hover:scale-[1.03] hover:shadow-cardHover disabled:cursor-wait disabled:opacity-60"
                     >
-                      {submitting ? "Sending…" : "Book my free water test"} <ArrowRight size={14} />
+                      {submitting ? "Sending…" : "Submit"} <ArrowRight size={14} />
                     </button>
                   )}
                 </div>
@@ -365,16 +368,9 @@ ${form.message ? `\nNotes: ${form.message}` : ""}`;
               </div>
               <h3 className="mt-5 font-display text-2xl font-bold text-white">Request received!</h3>
               <p className="mt-2 text-white/70">
-                A NovaElite technician will reach out shortly to confirm your free water test. Want to lock in a time now? Book directly on Calendly.
+                A NovaElite technician will reach out within 24 hours to confirm your free water test.
+                Check your inbox — we just sent you a confirmation email.
               </p>
-              <a
-                href={SITE.calendly}
-                target="_blank"
-                rel="noreferrer"
-                className="brand-gradient mt-6 inline-flex rounded-full px-6 py-2.5 text-sm font-bold text-white shadow-card"
-              >
-                Open Calendly
-              </a>
             </motion.div>
           )}
         </div>
