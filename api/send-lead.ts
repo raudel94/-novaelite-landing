@@ -1,7 +1,5 @@
 import { Resend } from "resend";
 
-export const config = { runtime: "nodejs" };
-
 const ADMIN_EMAIL = "info@novaelitecorporation.com";
 const FROM_EMAIL = "NovaElite Water <leads@novaelitecorporation.com>";
 const REPLY_FROM = "NovaElite <info@novaelitecorporation.com>";
