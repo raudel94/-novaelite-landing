@@ -9,7 +9,7 @@ const LOGO_URL = "https://novaelitecorporation.com/logo.png";
 const SITE_URL = "https://novaelitecorporation.com";
 const PHONE_DISPLAY = "(786) 385-3287";
 const PHONE_RAW = "+17863853287";
-const CALENDLY_URL = "https://calendly.com/lanfercorporation/30min?utm_medium=testgoogle";
+const CALENDLY_URL = "https://calendly.com/novaelitecorporation/30min?utm_medium=testgoogle";
 const FACEBOOK_URL = "https://www.facebook.com/share/1EWW41ey5G/?mibextid=wwXIfr";
 const INSTAGRAM_URL = "https://www.instagram.com/novaelite.corporation";
 
